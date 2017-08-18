@@ -1,0 +1,160 @@
+body{
+  font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+}
+#states, #party{
+  display: none;
+}
+#success-modal{
+  z-index: 1;
+
+}
+.search-form{
+  margin-top: 10%;
+}
+.navbar-brand{
+  font-family: 'IM Fell English', serif;
+  font-size: 4em;
+  font-weight: bolder;
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+.card{  
+  background-color: #eee;
+  margin-bottom: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.card .card-title {
+  text-align: center;
+  margin-top: 10%;
+  color: black;
+}
+
+.img-fluid.img-responsive{
+  cursor: pointer;
+}
+
+.flow-text{
+  float: right;
+  color: indigo;
+}
+
+#cardlocation{
+  clear: both;
+  margin: 30px 0 20px 0;
+}
+
+#basic_info{
+  margin: 30px 0 30px 0;
+}
+
+#recent_bills{
+  clear: both;
+  margin: 30px 0 0 30px;
+  width: 85%;
+}
+
+#resolutions{
+  margin: 10px 0 30px 30px;
+  width: 85%;
+}
+
+#twitterArea{
+  margin: 0 0 0 35px;
+}
+
+#newstitle{
+  margin: 10px 0 5px 0;
+  font-family: 'UnifrakturMaguntia', cursive;
+  color: black;
+  font-size: 4em;
+  font-weight: bolder;
+  text-align: center;
+}
+
+#newsdisplay{
+  margin: 0 0 20px 45px;
+  width: 90%;
+  border: 4px dashed black;
+  background-color: #DCDCDC;
+}
+
+#newsdisplay p{
+  font-style: italic;
+}
+
+.snippet{
+  background-color: #DCDCDC;
+}
+
+#tweetArea{
+  border-radius: 5px;
+  background-color: SkyBlue;
+  width: 90%;
+  margin: 10px 10px 10px 45px;
+  font-weight: bolder;
+  font-style: italic;
+}
+
+#recent_bills, #twitterArea, #tweetArea, #newsdisplay, #newstitle, #resolutions, .twitter-timeline{
+  display: none;
+}
+
+#follow{
+  background-color: #2BBBAD;
+  color: white;
+  margin: 0;
+}
+
+#basic, #recent, #tweets, #other{
+  margin: 10px 0px 10px 80px;
+  font-size: 2em;
+  font-weight: bolder;
+}
+
+li {
+  display: inline;
+  float: left;
+  margin: 10px;
+}
+
+.navbar img{
+  position: absolute;
+  z-index: -1;
+  left: 225px;
+  height: 65px; 
+  width: 200px;
+  padding: 0;
+  margin: 0 10px 0 0 ;
+}
+
+#title{
+  position: relative;
+  z-index: 10;
+  top: 10;
+}
+
+.navbar-left{
+  margin: 0 0 0 15%;
+}
+
+/*.navbar-right{
+  position: relative;
+  right: 0%;
+}*/
+
+body > nav{
+  height: 85px;
+}
+.modal-content{
+  height: auto;
+}
+
+#welcome{
+  display: none;
+}
+#sign-out{
+  display: none;
+}
+

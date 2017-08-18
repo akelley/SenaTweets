@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<head>
+  <title>SenaTweets</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="assets/css/reset.css" >
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+English:400i"> 
+  <link href="https://fonts.googleapis.com/css?family=UnifrakturMaguntia" rel="stylesheet"> 
+  <link rel="icon" href="https://amercustomconstruction.com/wp-content/uploads/2017/02/cropped-favicon.jpg" sizes="any" type="image/svg+xml">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css"> -->
+
+  <link rel="stylesheet" href="assets/css/mdb.css" >
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#Signin" aria-controls="Signin" role="tab" data-toggle="tab">Sign In</a></li>
+            <li role="presentation"><a href="#Signup" aria-controls="Signup" role="tab" data-toggle="tab">Sign Up</a></li>
+          </ul>
+        </div>
+        <div class="modal-body">
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="Signin">
+              <form role="form">
+                <br>
+                <div class="form-group">
+                  <kbd>Enter Email</kbd>
+                  <input type="text" class="form-control" id="email-signin" placeholder="yourname@example.com">
+                </div>
+                <br>
+                <div class="form-group">
+                  <kbd>Enter Password</kbd>
+                  <input type="password" class="form-control" id="password-signin" placeholder="Enter password">
+                </div>
+              </form>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-success btn-block" id="sign-in"><span class="glyphicon glyphicon-off"></span> Login</button>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="Signup">
+              <form role="form">
+                <br>
+                <div class="form-group">
+                  <kbd>Enter Username</kbd>
+                  <input type="text" class="form-control" id="username-signup" placeholder="Username">
+                </div>                
+                <div class="form-group">
+                  <kbd>Enter Email</kbd>
+                  <input type="text" class="form-control" id="email-signup" placeholder="yourname@example.com">
+                </div>
+                <br>
+                <div class="form-group">
+                  <kbd>Enter Password</kbd>
+                  <input type="password" class="form-control" id="password-signup" placeholder="password">
+                </div>
+              </form>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-success btn-block" id="sign-up"><span class="glyphicon glyphicon-off"></span> Sign Up</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+  <div class="modal fade" id="success-modal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <h5 id="success-span"></h5>
+        </div>
+        <div class="modal-footer">
+          <button type class="btn btn-primary" data-dismiss="modal" id="close-modals">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark indigo navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+      <img src="http://www.fes.net/siteart/Flag-USA.png" alt="SenaTweets">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#" id="title">SenaTweets</a>
+      </div>
+      <ul class="nav navbar-nav navbar-left">
+        <li><a href="#" id="showfaves">Senators I Follow</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" id="welcome"></a></li>
+        <li><a href="#" id="openmodal">Login</a></li>
+        <li><a href="#" id="sign-out">Sign Out</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container main-content">
+    <div class="form-group search-form">
+      <div class="input-group-btn">
+        <button class="btn btn-default search-by-name active" id="name-button">Search By Name</button>
+        <button class="btn btn-default search-by-state" id="states-button">Search By State</button>
+        <button class="btn btn-default search-by-party" id="party-button">Search By Party</button>
+      </div>
+      <div class="input-group search-by-name" id="first-name">
+        <span class="input-group-addon">First Name</span>
+        <input type="text" class="form-control" id="first-name-bar" placeholder='John'>
+      </div>
+      <div class="input-group search-by-name" id="last-name">
+        <span class="input-group-addon">Last Name</span>
+        <input type="text" class="form-control" id="last-name-bar" placeholder='Smith'>
+      </div>
+      <div class="input-group dropdown search-by-state" id="states">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <span id="state-bar">States</span>
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" id="states-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="#" value="AL">ALABAMA (AL)</a></li>
+          <li><a href="#" value="AK">ALASKA  (AK)</a></li>
+          <li><a href="#" value="AZ">ARIZONA (AZ)</a></li>
+          <li><a href="#" value="AR">ARKANSAS  (AR)</a></li>
+          <li><a href="#" value="CA">CALIFORNIA  (CA)</a></li>
+          <li><a href="#" value="CO">COLORADO  (CO)</a></li>
+          <li><a href="#" value="CT">CONNECTICUT (CT)</a></li>
+          <li><a href="#" value="DE">DELAWARE  (DE)</a></li>
+          <li><a href="#" value="FL">FLORIDA (FL)</a></li>
+          <li><a href="#" value="GA">GEORGIA (GA)</a></li>
+          <li><a href="#" value="HI">HAWAII  (HI)</a></li>
+          <li><a href="#" value="ID">IDAHO (ID)</a></li>
+          <li><a href="#" value="IL">ILLINOIS  (IL)</a></li>
+          <li><a href="#" value="IN">INDIANA (IN)</a></li>
+          <li><a href="#" value="IA">IOWA  (IA)</a></li>
+          <li><a href="#" value="KS">KANSAS  (KS)</a></li>
+          <li><a href="#" value="KY">KENTUCKY  (KY)</a></li>
+          <li><a href="#" value="LA">LOUISIANA (LA)</a></li>
+          <li><a href="#" value="ME">MAINE (ME)</a></li>
+          <li><a href="#" value="MD">MARYLAND  (MD)</a></li>
+          <li><a href="#" value="MA">MASSACHUSETTS (MA)</a></li>
+          <li><a href="#" value="MI">MICHIGAN  (MI)</a></li>
+          <li><a href="#" value="MN">MINNESOTA (MN)</a></li>
+          <li><a href="#" value="MS">MISSISSIPPI (MS)</a></li>
+          <li><a href="#" value="MO">MISSOURI  (MO)</a></li>
+          <li><a href="#" value="MT">MONTANA (MT)</a></li>
+          <li><a href="#" value="NE">NEBRASKA  (NE)</a></li>
+          <li><a href="#" value="NV">NEVADA  (NV)</a></li>
+          <li><a href="#" value="NH">NEW HAMPSHIRE (NH)</a></li>
+          <li><a href="#" value="NJ">NEW JERSEY  (NJ)</a></li>
+          <li><a href="#" value="NM">NEW MEXICO  (NM)</a></li>
+          <li><a href="#" value="NY">NEW YORK  (NY)</a></li>
+          <li><a href="#" value="NC">NORTH CAROLINA  (NC)</a></li>
+          <li><a href="#" value="ND">NORTH DAKOTA  (ND)</a></li>
+          <li><a href="#" value="OH">OHIO  (OH)</a></li>
+          <li><a href="#" value="OK">OKLAHOMA  (OK)</a></li>
+          <li><a href="#" value="OR">OREGON  (OR)</a></li>
+          <li><a href="#" value="PA">PENNSYLVANIA  (PA)</a></li>
+          <li><a href="#" value="RI">RHODE ISLAND  (RI)</a></li>
+          <li><a href="#" value="SC">SOUTH CAROLINA  (SC)</a></li>
+          <li><a href="#" value="SD">SOUTH DAKOTA  (SD)</a></li>
+          <li><a href="#" value="TN">TENNESSEE (TN)</a></li>
+          <li><a href="#" value="TX">TEXAS (TX)</a></li>
+          <li><a href="#" value="UT">UTAH  (UT)</a></li>
+          <li><a href="#" value="VT">VERMONT (VT)</a></li>
+          <li><a href="#" value="VA">VIRGINIA  (VA)</a></li>
+          <li><a href="#" value="WA">WASHINGTON  (WA)</a></li>
+          <li><a href="#" value="WV">WEST VIRGINIA (WV)</a></li>
+          <li><a href="#" value="WI">WISCONSIN (WI)</a></li>
+          <li><a href="#" value="WY">WYOMING (WY)</a></li>
+        </ul>
+      </div>
+      <div class="input-group dropdown search-by-party" id="party">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <span id="party-bar">Party</span>
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" id="party-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="#" value="D">Democratic</a></li>
+          <li><a href="#" value="R">Republican</a></li>
+          <li><a href="#" value="I">Independent</a></li>
+        </ul>
+      </div>
+      <button type="submit" class="btn btn-default" id="search-button">Submit</button>
+      <span id="input-errors"></span>
+    </div>
+    <div class="row" id="search-results">
+    </div>
+  </div>
+
+  <div class="modal fade" id="senmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="container-fluid modal-body">
+          <div class="modal-header">
+            <div class="row">
+              <div class="col s12">
+                <ul class="tabs tabs-fixed-width">
+                  <li><button type="button" class="btn btn-secondary" id="follow">Follow Senator</button></li>
+                  <li class="tab col s3" id="basic"><a class="active" href="#notcurrentlyused">Info</a></li>
+                  <li class="tab col s3" id="recent"><a href="#recent_bills">Bills</a></li>
+                  <li class="tab col s3" id="tweets"><a href="#twitterArea">Tweets</a></li>
+                  <li class="tab col s3" id="other"><a href="#newsdisplay">Articles</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4" id="cardlocation"></div>
+            <div class="col-sm-8" id="basic_info">
+              <div class="row" id="notcurrentlyused"><u><b>Basic Information:</b></u></div><br>
+              <div class="row" id="sub_commitees"><u><b>Current Committee Memberships:</b></u></div>
+            </div>
+            <div class="col-sm-12" id="recent_bills"><u><b>Recent Bills Sponsored:</b></u></div>
+            <div class="col-sm-12" id="resolutions"><u><b>Further Resolutions:</b></u></div>
+            <div class="col-sm-12" id="tweetArea"></div>
+            <div class="col-sm-12" id="twitterArea"><a class="twitter-timeline"></a></div>
+            <div class="col-sm-12" id="newstitle"><u><b>New York Times Articles</b></u></div>
+            <div class="col-sm-12" id="newsdisplay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Modal -->
+</body>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="assets/js/mdb.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/scripts.js"></script>
+
+</html>
