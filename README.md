@@ -1,5 +1,5 @@
 # SenaTweets
-Media-gathering application using Firebase, Twitter embedded timelines, Propublica, NYT and Twitter APIs.
+Media-gathering application for U.S. senators using Firebase, Twitter embedded timelines, Propublica, NYT and Twitter APIs.
 
 Please find the application deployed here:
 
